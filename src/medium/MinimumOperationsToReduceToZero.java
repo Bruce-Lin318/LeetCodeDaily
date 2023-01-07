@@ -7,11 +7,14 @@ import java.util.Map;
 /**
  * https://leetcode.cn/problems/minimum-operations-to-reduce-x-to-zero/
  * 1658. 将 x 减到 0 的最小操作数
- *
+ * 思路：将从数组两边取值x转换为在数组内部找出最长（sum - x）子串
  * @author Lin
  * @date 2023/1/7
  */
 public class MinimumOperationsToReduceToZero {
+    /**
+     * 滑动窗口
+     */
     public int minOperations(int[] nums, int x) {
         int sum = Arrays.stream(nums).sum();
         if (sum == x) {
@@ -33,6 +36,10 @@ public class MinimumOperationsToReduceToZero {
         return res == -1 ? -1 : nums.length - res;
     }
 
+    /**
+     * 前缀和 + 哈希查找
+     * hash还是比较慢
+     */
     public int minOperations2(int[] nums, int x) {
         int target = Arrays.stream(nums).sum() - x;
         int res = -1;
