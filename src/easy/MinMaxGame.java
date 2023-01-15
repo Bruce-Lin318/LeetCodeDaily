@@ -11,10 +11,9 @@ public class MinMaxGame {
     public int minMaxGame(int[] nums) {
         int length = nums.length;
         while (length > 1) {
-            int index = 0;
-            while (index < length / 2) {
+            int index = -1;
+            while (++index < length / 2) {
                 nums[index] = index % 2 == 0 ? Math.min(nums[index * 2], nums[index * 2 + 1]) : Math.max(nums[index * 2], nums[index * 2 + 1]);
-                index++;
             }
             length /= 2;
         }
