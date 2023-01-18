@@ -36,11 +36,16 @@ public class FindingMKAverage {
         }
 
         public void addElement(int num) {
+            // 如果队满了，即已经包含了m个，删除最老元素，为最新元素添加预留位置
             if (queue.size() == count) {
                 remove(queue.poll());
             }
+            // 直接向最小段塞值
             add(min, num);
             minSize++;
+            // 如果哪个段数据溢出，流向下一段
+            // 最大段永不溢出，事先已经清理过最老元素，最大段预留了位置
+            // 这样写不用处理未满m个时的分段移动判断
             if (minSize > limit) {
                 int last = popLast(min);
                 add(med, last);
@@ -62,6 +67,8 @@ public class FindingMKAverage {
         }
 
         private void remove(int discard) {
+            // 删掉最老元素
+            // 哪一段空缺元素，从更大段中拿，保证最后空位在最大段
             if (discard >= max.firstKey()) {
                 pop(max, discard);
             } else if (discard >= med.firstKey()) {
