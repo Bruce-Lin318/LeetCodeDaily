@@ -17,23 +17,23 @@ public class BinaryTreeColoringGame {
         if (root.val == x) {
             return getCount(root.left) != getCount(root.right);
         }
-        TreeNode one = null;
+        TreeNode first = null;
         Deque<TreeNode> deque = new LinkedList<>();
         deque.offer(root);
         while (!deque.isEmpty()) {
-            one = deque.poll();
-            if (one.val == x) {
+            first = deque.poll();
+            if (first.val == x) {
                 break;
             }
-            if (one.left != null) {
-                deque.offer(one.left);
+            if (first.left != null) {
+                deque.offer(first.left);
             }
-            if (one.right != null) {
-                deque.offer(one.right);
+            if (first.right != null) {
+                deque.offer(first.right);
             }
         }
-        int left = getCount(one.left);
-        int right = getCount(one.right);
+        int left = getCount(first.left);
+        int right = getCount(first.right);
         // 要么拿先手的父节点，子节点全部归先手
         // 要么拿先手的子节点，后手的兄弟节点和父节点全部归先手
         // 有一种情况赢即为必赢
