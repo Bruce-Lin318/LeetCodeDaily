@@ -28,7 +28,7 @@ public class AlertUsingSameKeyCardThreeOrMoreTimesInOneHourPeriod {
             }
         }
         Collections.sort(names);
-        return new ArrayList<>(names);
+        return names;
     }
 
     private int parse(String time) {
