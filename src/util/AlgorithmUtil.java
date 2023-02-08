@@ -26,8 +26,7 @@ public class AlgorithmUtil {
         return head.next;
     }
 
-
-    public static void printArr(int[] arr) {
+    public static <T> void printArr(T[] arr) {
         System.out.println(Arrays.toString(arr));
     }
 
