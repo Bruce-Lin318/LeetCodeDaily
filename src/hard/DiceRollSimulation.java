@@ -25,10 +25,12 @@ public class DiceRollSimulation {
                 int index = i - rollMax[j] - 1;
                 if (index >= 0) {
                     for (int k = 0; k < number; k++) {
+                        // 防止count为负数
                         count -= dp[index][k] - mod;
                     }
                     count += dp[index][j];
                 } else if (index == -1) {
+                    // 特殊情况：当前骰子之前的所有数均为j且刚好满员
                     count -= 1;
                 }
                 dp[i][j] = (int) (count % mod);
