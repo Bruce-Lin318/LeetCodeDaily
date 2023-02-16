@@ -10,6 +10,9 @@ import java.util.Arrays;
  * @date 2023/2/16
  */
 public class MaximumNumberOfPairsInArray {
+    /**
+     * 排序了，比桶计数要慢一些
+     */
     public int[] numberOfPairs(int[] nums) {
         Arrays.sort(nums);
         int count = 0;
@@ -25,6 +28,9 @@ public class MaximumNumberOfPairsInArray {
         return new int[]{count, nums.length - count * 2};
     }
 
+    /**
+     * 直接统计数
+     */
     public int[] numberOfPairs2(int[] nums) {
         int[] counts = new int[101];
         for (int num : nums) {
