@@ -21,13 +21,12 @@ public class MergeSimilarItems {
         }
         List<List<Integer>> res = new ArrayList<>();
         for (int i = 0; i < w.length; i++) {
-            if (w[i] == 0) {
-                continue;
+            if (w[i] != 0) {
+                List<Integer> list = new ArrayList<>();
+                list.add(i);
+                list.add(w[i]);
+                res.add(list);
             }
-            List<Integer> list = new ArrayList<>();
-            list.add(i);
-            list.add(w[i]);
-            res.add(list);
         }
         return res;
     }
