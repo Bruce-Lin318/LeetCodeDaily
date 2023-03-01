@@ -30,5 +30,4 @@ public class MergeSimilarItems {
         }
         return res;
     }
-
 }
