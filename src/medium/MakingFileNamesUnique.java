@@ -1,5 +1,8 @@
 package medium;
 
+import util.TestUtil;
+import util.annotation.Main;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -12,6 +15,7 @@ import java.util.Map;
  */
 public class MakingFileNamesUnique {
 
+    @Main
     public String[] getFolderNames(String[] names) {
         Map<String, Integer> map = new HashMap<>();
         String[] ans = new String[names.length];
@@ -36,4 +40,9 @@ public class MakingFileNamesUnique {
     private String addSuffix(String name, int num) {
         return name + "(" + num + ")";
     }
+
+    public static void main(String[] args) {
+        TestUtil.invoke(new String[]{"pes","fifa","gta","pes(2019)"});
+    }
+
 }
