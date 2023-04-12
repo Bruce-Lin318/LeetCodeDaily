@@ -10,7 +10,6 @@ import java.lang.reflect.Method;
  */
 public class TestUtil {
 
-
     public static void invoke(Object... args) {
         create().invoke(args);
     }

@@ -1,5 +1,6 @@
 package util;
 
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 /**
@@ -16,23 +17,35 @@ public class Solution<T> {
             // TODO: 2023/4/11 增加指定构造器的注解，先扫描有没有指定构造器，没有的话用空参
             this.core = tClass.getDeclaredConstructor().newInstance();
         } catch (Exception e) {
-            System.out.println(e.getMessage());
+            throw new RuntimeException(e);
         }
     }
 
     public void invoke(Object... args) {
         try {
-            Object invoke = method.invoke(core, new Object[]{args});
-            if (method.getReturnType().equals(Void.TYPE)) {
-                return;
-            }
-            if (method.getReturnType().isArray()) {
-                AlgorithmUtil.printArr((Object[])invoke);
-            } else {
-                System.out.println(invoke);
-            }
+            Object res = doInvoke(args);
+            parseResult(res, method.getReturnType());
         } catch (Exception e) {
             throw new RuntimeException(e);
+        }
+    }
+
+    private Object doInvoke(Object... args) throws InvocationTargetException, IllegalAccessException {
+        if (method.getParameterCount() == 1 && method.getParameterTypes()[0].isArray()) {
+            // 防止参数为数组时invoke将数组拆散拆散传入
+            return method.invoke(core, new Object[]{args});
+        }
+        return method.invoke(core, args);
+    }
+
+    private void parseResult(Object res, Class returnType) {
+        if (Void.TYPE.equals(returnType)) {
+            return;
+        }
+        if (returnType.isArray()) {
+            AlgorithmUtil.printArr((Object[]) res);
+        } else {
+            System.out.println(res);
         }
     }
 }
