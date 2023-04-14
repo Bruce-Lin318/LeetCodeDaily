@@ -31,7 +31,7 @@ public class Solution<T> {
     }
 
     private Object doInvoke(Object... args) throws InvocationTargetException, IllegalAccessException {
-        if (method.getParameterCount() == 1 && method.getParameterTypes()[0].isArray()) {
+        if (method.getParameterCount() == 1 && method.getParameterTypes()[0].isArray() && !method.getParameterTypes()[0].getComponentType().isPrimitive()) {
             // 防止参数为数组时invoke将数组拆散拆散传入
             return method.invoke(core, new Object[]{args});
         }
