@@ -1,5 +1,6 @@
 package util;
 
+import java.lang.reflect.Array;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
@@ -38,12 +39,24 @@ public class Solution<T> {
         return method.invoke(core, args);
     }
 
+    private Object[] convertToArray(Object o) {
+        if (!o.getClass().isArray()) {
+            throw new RuntimeException("传入对象不合法，为非数组");
+        }
+        int length = Array.getLength(o);
+        Object[] objects = new Object[length];
+        for (int i = 0; i < objects.length; i++) {
+            objects[i] = Array.get(o, i);
+        }
+        return objects;
+    }
+
     private void parseResult(Object res, Class returnType) {
         if (Void.TYPE.equals(returnType)) {
             return;
         }
         if (returnType.isArray()) {
-            AlgorithmUtil.printArr((Object[]) res);
+            AlgorithmUtil.printArr(convertToArray(res));
         } else {
             System.out.println(res);
         }
