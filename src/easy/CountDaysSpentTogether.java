@@ -1,6 +1,5 @@
 package easy;
 
-import util.TestUtil;
 import util.annotation.Main;
 
 /**
