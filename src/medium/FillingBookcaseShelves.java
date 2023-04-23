@@ -1,7 +1,5 @@
 package medium;
 
-
-import util.TestUtil;
 import util.annotation.Main;
 
 import java.util.Arrays;
@@ -27,15 +25,9 @@ public class FillingBookcaseShelves {
                     break;
                 }
                 height = Math.max(height, books[j][1]);
-                dp[i + 1] = Math.min(dp[j] +  height, dp[i + 1]);
+                dp[i + 1] = Math.min(dp[j] + height, dp[i + 1]);
             }
         }
         return dp[dp.length - 1];
-    }
-
-
-    public static void main(String[] args) {
-        int[][] books = new int[][]{{1,1},{2,3},{2,3},{1,1},{1,1},{1,1},{1,2}};
-        TestUtil.invoke(books, 4);
     }
 }
