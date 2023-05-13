@@ -10,7 +10,7 @@ package easy;
 public class LargestPositiveIntegerThatExistsWithItsNegative {
     public int findMaxK(int[] nums) {
         boolean[] negative = new boolean[1001];
-        int res = 0;
+        int res = -1;
         for (int num : nums) {
             if (num < 0) {
                 negative[-num] = true;
