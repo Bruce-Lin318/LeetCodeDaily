@@ -24,10 +24,10 @@ public class InsufficientNodesInRootToLeafPaths {
         int right = dfs(node.right, limit, sum + node.val);
         int res = Math.max(left, right);
 
-        if (left != Integer.MIN_VALUE && left + sum + node.val < limit) {
+        if (left + sum + node.val < limit) {
             node.left = null;
         }
-        if (right != Integer.MIN_VALUE && right + sum + node.val < limit) {
+        if (right + sum + node.val < limit) {
             node.right = null;
         }
         return node.val + (res == Integer.MIN_VALUE ? 0 : res);
