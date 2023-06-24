@@ -29,12 +29,4 @@ public class AlgorithmUtil {
     public static <T> void printArr(T[] arr) {
         System.out.println(Arrays.toString(arr));
     }
-
-    public static void printNode(Node head) {
-        while (head != null) {
-            System.out.print(head.value + " -> ");
-            head = head.next;
-        }
-        System.out.print("null");
-    }
 }
