@@ -14,7 +14,6 @@ public class AlgorithmUtil {
         }
         return arr;
     }
-
     public static Node generateLinkedList(int size, int max) {
         Node head = new Node();
         Node cur = head;
