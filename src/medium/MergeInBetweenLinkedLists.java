@@ -26,11 +26,11 @@ public class MergeInBetweenLinkedLists {
         return list1;
     }
 
-    public class ListNode {
+    public static class ListNode {
         int val;
         ListNode next;
 
-        ListNode() {
+        public ListNode() {
         }
 
         ListNode(int val) {
